@@ -90,9 +90,14 @@ index = [i for i in range(len(r['class_ids'])) if (r['class_ids'][i]==4 or r['cl
 boxes = r['rois'][index]
 masks = r['masks'][:,:, index]
 class_ids = r['class_ids'][index]
-visualize.display_instances(image, boxes, masks, class_ids, class_names, r['scores'][index])
+#visualize.display_instances(image, boxes, masks, class_ids, class_names, r['scores'][index])
 
 if index == []:
-	print("No vehicles identified")
+    result = "No vehicles identified"
 else:
-	print(len(index), " vehicles identified!")
+    result = str(len(index))+" vehicles identified!"
+print(result)
+
+text_file = open("temp.txt", "w")
+text_file.write(result)
+text_file.close()
